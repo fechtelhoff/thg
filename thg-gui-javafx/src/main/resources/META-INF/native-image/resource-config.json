@@ -1,0 +1,12 @@
+{
+  "resources":{
+  "includes":[
+    {"pattern":"\\Qde/fechtelhoff/thg/gui/javafx/JavaFxGuiView.fxml\\E"}, 
+    {"pattern":"\\Qlogo.png\\E"}, 
+    {"pattern":"\\Qproject.properties\\E"}
+  ]},
+  "bundles":[
+    {"name":"com.sun.javafx.tk.quantum.QuantumMessagesBundle"}, 
+    {"name":"com/sun/javafx/scene/control/skin/resources/controls"}
+  ]
+}

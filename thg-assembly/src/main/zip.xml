@@ -1,0 +1,105 @@
+<assembly
+	xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.3"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.3 http://maven.apache.org/xsd/assembly-1.1.3.xsd
+http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.3 ">
+
+	<id>zip</id>
+	<formats>
+		<format>zip</format>
+	</formats>
+
+	<includeBaseDirectory>false</includeBaseDirectory>
+
+	<files>
+		<!-- Test Datei -->
+		<file>
+			<source>./src/test/resources/test/assembly/testfile.txt</source>
+			<destName>testfile.txt</destName>
+			<outputDirectory>test</outputDirectory>
+		</file>
+
+		<!-- Readme -->
+		<file>
+			<source>../thg-doc/src/main/Readme.txt</source>
+			<destName>Readme.txt</destName>
+			<outputDirectory>.</outputDirectory>
+		</file>
+
+		<!-- Documentation -->
+		<file>
+			<source>../thg-doc/src/main/TheHolyGraal-Dokumentation.pdf</source>
+			<destName>TheHolyGraal-Dokumentation.pdf</destName>
+			<outputDirectory>doc</outputDirectory>
+		</file>
+
+		<!-- API -->
+		<file>
+			<source>../thg-api/target/thg-api-${project.version}.jar</source>
+			<destName>thg-api-${project.version}.jar</destName>
+			<outputDirectory>api</outputDirectory>
+		</file>
+		<file>
+			<source>../thg-api/target/thg-api-${project.version}-sources.jar</source>
+			<destName>thg-api-${project.version}-sources.jar</destName>
+			<outputDirectory>api</outputDirectory>
+		</file>
+		<file>
+			<source>../thg-api/target/thg-api-${project.version}-javadoc.jar</source>
+			<destName>thg-api-${project.version}-javadoc.jar</destName>
+			<outputDirectory>api</outputDirectory>
+		</file>
+
+		<!-- CLI -->
+		<file>
+			<source>../thg-cli/target/classes/thg-cli.cmd</source>
+			<destName>thg-cli.cmd</destName>
+			<outputDirectory>cli</outputDirectory>
+		</file>
+		<file>
+			<source>../thg-cli/target/thg-cli-${project.version}-jar-with-dependencies.jar</source>
+			<destName>thg-cli-${project.version}.jar</destName>
+			<outputDirectory>cli</outputDirectory>
+		</file>
+		<file>
+			<source>../thg-cli/target/thg-cli.exe</source>
+			<destName>thg-cli.exe</destName>
+			<outputDirectory>cli</outputDirectory>
+		</file>
+
+		<!-- GUI Swing -->
+		<file>
+			<source>../thg-gui-swing/target/classes/thg-gui-swing.cmd</source>
+			<destName>thg-gui-swing.cmd</destName>
+			<outputDirectory>gui</outputDirectory>
+		</file>
+		<file>
+			<source>../thg-gui-swing/target/thg-gui-swing-${project.version}-jar-with-dependencies.jar</source>
+			<destName>thg-gui-swing-${project.version}.jar</destName>
+			<outputDirectory>gui</outputDirectory>
+		</file>
+		<file>
+			<source>../thg-gui-swing/target/thg-gui-swing.exe</source>
+			<destName>thg-gui-swing.exe</destName>
+			<outputDirectory>gui</outputDirectory>
+		</file>
+
+		<!-- GUI JavaFX -->
+		<file>
+			<source>../thg-gui-javafx/target/classes/thg-gui-javafx.cmd</source>
+			<destName>thg-gui-javafx.cmd</destName>
+			<outputDirectory>gui</outputDirectory>
+		</file>
+		<file>
+			<source>../thg-gui-javafx/target/thg-gui-javafx-${project.version}-jar-with-dependencies.jar</source>
+			<destName>thg-gui-javafx-${project.version}.jar</destName>
+			<outputDirectory>gui</outputDirectory>
+		</file>
+		<file>
+			<source>../thg-gui-javafx/target/client/x86_64-windows/The Holy Graal - GUI JavaFX.exe</source>
+			<destName>thg-gui-javafx.exe</destName>
+			<outputDirectory>gui</outputDirectory>
+		</file>
+	</files>
+
+</assembly>

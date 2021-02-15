@@ -1,0 +1,12 @@
+{
+  "resources":{
+  "includes":[
+    {"pattern":"\\Qlogo.png\\E"}, 
+    {"pattern":"\\Qproject.properties\\E"}
+  ]},
+  "bundles":[
+    {"name":"com.sun.swing.internal.plaf.basic.resources.basic"}, 
+    {"name":"com.sun.swing.internal.plaf.metal.resources.metal"}, 
+    {"name":"sun.awt.resources.awt"}
+  ]
+}

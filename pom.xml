@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>de.fechtelhoff</groupId>
+	<artifactId>thg</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>The Holy Graal</name>
+	<description>Beispielprojekt für die Nutzung von GraalVM.</description>
+
+	<modules>
+		<module>thg-api</module>
+		<module>thg-core</module>
+		<module>thg-utils</module>
+		<module>thg-cli</module>
+		<module>thg-gui-shared</module>
+		<module>thg-gui-swing</module>
+		<module>thg-gui-javafx</module>
+		<module>thg-doc</module>
+		<module>thg-assembly</module>
+	</modules>
+
+	<properties>
+		<!-- Application -->
+		<zip.name>THG-${project.version}</zip.name>
+
+		<!-- Encoding -->
+		<project.encoding>UTF-8</project.encoding>
+		<project.build.sourceEncoding>${project.encoding}</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>${project.encoding}</project.reporting.outputEncoding>
+
+		<!-- Java Version -->
+		<java.version>11</java.version>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+
+		<!-- Dependency Version -->
+		<version.graalvm>21.0.0</version.graalvm>
+		<version.picocli>4.6.1</version.picocli>
+		<version.jetbrains.ui-designer>2020.2</version.jetbrains.ui-designer>
+		<version.javafx>15.0.1</version.javafx>
+		<version.junit>5.7.1</version.junit>
+		<version.junit5.system-exit>1.0.0</version.junit5.system-exit>
+		<version.mockito>3.7.7</version.mockito>
+		<version.assertj-swing-junit>3.17.1</version.assertj-swing-junit>
+		<version.testfx>4.0.16-alpha</version.testfx>
+
+		<!-- Plugin Version -->
+		<version.compiler.plugin>3.8.1</version.compiler.plugin>
+		<version.jar.plugin>3.2.0</version.jar.plugin>
+		<version.assembly.plugin>3.3.0</version.assembly.plugin>
+		<version.resources.plugin>3.2.0</version.resources.plugin>
+		<version.source.plugin>3.2.1</version.source.plugin>
+		<version.install.plugin>3.0.0-M1</version.install.plugin>
+		<version.deploy.plugin>3.0.0-M1</version.deploy.plugin>
+		<version.javadoc.plugin>3.2.0</version.javadoc.plugin>
+		<version.surefire.plugin>3.0.0-M5</version.surefire.plugin>
+		<version.jacoco.plugin>0.8.6</version.jacoco.plugin>
+		<version.sonar.plugin>3.7.0.1746</version.sonar.plugin>
+		<version.dependency-check.plugin>6.1.0</version.dependency-check.plugin>
+		<version.gluon.client.plugin>0.1.36</version.gluon.client.plugin>
+		<version.javafx.plugin>0.0.5</version.javafx.plugin>
+
+		<!-- Sonar -->
+		<sonar.language>java</sonar.language>
+		<sonar.java.source>${java.version}</sonar.java.source>
+		<sonar.java.libraries>target</sonar.java.libraries>
+		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+		<sonar.dependencyCheck.reportPath>target/dependency-check-report.xml</sonar.dependencyCheck.reportPath>
+		<sonar.dependencyCheck.jsonReportPath>target/dependency-check-report.json</sonar.dependencyCheck.jsonReportPath>
+		<sonar.dependencyCheck.htmlReportPath>target/dependency-check-report.html</sonar.dependencyCheck.htmlReportPath>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- Project Internal Dependencies -->
+			<dependency>
+				<groupId>de.fechtelhoff</groupId>
+				<artifactId>thg-api</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>de.fechtelhoff</groupId>
+				<artifactId>thg-core</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>de.fechtelhoff</groupId>
+				<artifactId>thg-utils</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>de.fechtelhoff</groupId>
+				<artifactId>thg-gui-shared</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<!-- CLI Framework -->
+			<dependency>
+				<groupId>info.picocli</groupId>
+				<artifactId>picocli</artifactId>
+				<version>${version.picocli}</version>
+			</dependency>
+
+			<!-- Jetbrains UiDesigner -->
+			<dependency>
+				<groupId>com.intellij</groupId>
+				<artifactId>forms_rt</artifactId>
+				<version>${version.jetbrains.ui-designer}</version>
+			</dependency>
+
+			<!-- JavaFX -->
+			<dependency>
+				<groupId>org.openjfx</groupId>
+				<artifactId>javafx-controls</artifactId>
+				<version>${version.javafx}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.openjfx</groupId>
+				<artifactId>javafx-fxml</artifactId>
+				<version>${version.javafx}</version>
+			</dependency>
+
+			<!-- JUnit 5 -->
+			<dependency>
+				<groupId>org.junit</groupId>
+				<artifactId>junit-bom</artifactId>
+				<version>${version.junit}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<!-- JUnit 5 System Exit -->
+			<dependency>
+				<groupId>com.ginsberg</groupId>
+				<artifactId>junit5-system-exit</artifactId>
+				<version>${version.junit5.system-exit}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<!-- Mockito -->
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-core</artifactId>
+				<version>${version.mockito}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<!-- AssertJ Swing -->
+			<dependency>
+				<groupId>org.assertj</groupId>
+				<artifactId>assertj-swing-junit</artifactId>
+				<version>${version.assertj-swing-junit}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<!-- TestFX -->
+			<dependency>
+				<groupId>org.testfx</groupId>
+				<artifactId>testfx-core</artifactId>
+				<version>${version.testfx}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.testfx</groupId>
+				<artifactId>testfx-junit5</artifactId>
+				<version>${version.testfx}</version>
+				<scope>test</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<!-- Compiler -->
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${version.compiler.plugin}</version>
+				</plugin>
+
+				<!-- JAR -->
+				<plugin>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>${version.jar.plugin}</version>
+				</plugin>
+
+				<!-- Assembly -->
+				<plugin>
+					<artifactId>maven-assembly-plugin</artifactId>
+					<version>${version.assembly.plugin}</version>
+				</plugin>
+
+				<!-- Install -->
+				<plugin>
+					<artifactId>maven-install-plugin</artifactId>
+					<version>${version.install.plugin}</version>
+				</plugin>
+
+				<!-- Deploy -->
+				<plugin>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>${version.deploy.plugin}</version>
+				</plugin>
+
+				<!-- JavaDoc -->
+				<plugin>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>${version.javadoc.plugin}</version>
+				</plugin>
+
+				<!-- GraalVM Native Image -->
+				<plugin>
+					<groupId>org.graalvm.nativeimage</groupId>
+					<artifactId>native-image-maven-plugin</artifactId>
+					<version>${version.graalvm}</version>
+				</plugin>
+
+				<!-- Gluon Client (JavaFX) -->
+				<plugin>
+					<groupId>com.gluonhq</groupId>
+					<artifactId>client-maven-plugin</artifactId>
+					<version>${version.gluon.client.plugin}</version>
+				</plugin>
+
+				<!-- JavaFX -->
+				<plugin>
+					<groupId>org.openjfx</groupId>
+					<artifactId>javafx-maven-plugin</artifactId>
+					<version>${version.javafx.plugin}</version>
+				</plugin>
+
+				<!-- Resources -->
+				<plugin>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>${version.resources.plugin}</version>
+				</plugin>
+
+				<!-- Source -->
+				<plugin>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>${version.source.plugin}</version>
+				</plugin>
+
+				<!-- Surefire -->
+				<plugin>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>${version.surefire.plugin}</version>
+				</plugin>
+
+				<!-- JaCoCo (Code Coverage) -->
+				<plugin>
+					<groupId>org.jacoco</groupId>
+					<artifactId>jacoco-maven-plugin</artifactId>
+					<version>${version.jacoco.plugin}</version>
+				</plugin>
+
+				<!-- Sonar -->
+				<plugin>
+					<groupId>org.sonarsource.scanner.maven</groupId>
+					<artifactId>sonar-maven-plugin</artifactId>
+					<version>${version.sonar.plugin}</version>
+				</plugin>
+
+				<!-- OWASP (Dependency Check) -->
+				<plugin>
+					<groupId>org.owasp</groupId>
+					<artifactId>dependency-check-maven</artifactId>
+					<version>${version.dependency-check.plugin}</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
+		<plugins>
+			<!-- Compiler -->
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+
+			<!-- JAR -->
+			<plugin>
+				<artifactId>maven-jar-plugin</artifactId>
+			</plugin>
+
+			<!-- Assembly -->
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+			</plugin>
+
+			<!-- GraalVM Native Image -->
+			<plugin>
+				<groupId>org.graalvm.nativeimage</groupId>
+				<artifactId>native-image-maven-plugin</artifactId>
+			</plugin>
+
+			<!-- Resources -->
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+			</plugin>
+
+			<!-- Source -->
+			<plugin>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Surefire -->
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<argLine>-Dfile.encoding=${project.encoding}</argLine>
+					<!-- Timeout ist wichtig, da sonst meistens unter Windows einer der Tests fehl schlägt. -->
+					<forkedProcessExitTimeoutInSeconds>500</forkedProcessExitTimeoutInSeconds>
+				</configuration>
+			</plugin>
+
+			<!-- JaCoCo (Code Coverage) -->
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>${version.jacoco.plugin}</version>
+				<executions>
+					<execution>
+						<id>prepare-agent</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Sonar -->
+			<plugin>
+				<groupId>org.sonarsource.scanner.maven</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+			</plugin>
+
+			<!-- OWASP (Dependency Check) -->
+			<plugin>
+				<groupId>org.owasp</groupId>
+				<artifactId>dependency-check-maven</artifactId>
+				<configuration>
+					<format>ALL</format>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>Default</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<configuration>
+							<includes>
+								<include>**/*Test.java</include>
+							</includes>
+							<excludes>
+								<exclude>**/*IntTest.java</exclude>
+								<exclude>**/*GuiTest.java</exclude>
+							</excludes>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<profile>
+			<id>IntTest</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<configuration>
+							<excludes combine.self="override" />
+							<includes combine.self="override">
+								<include>**/*IntTest.java</include>
+							</includes>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<profile>
+			<id>GuiTest</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<configuration>
+							<excludes combine.self="override" />
+							<includes combine.self="override">
+								<include>**/*GuiTest.java</include>
+							</includes>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+</project>
