@@ -1,6 +1,5 @@
 package de.fechtelhoff.thg.gui.shared;
 
-import java.io.IOException;
 import java.io.PrintStream;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;

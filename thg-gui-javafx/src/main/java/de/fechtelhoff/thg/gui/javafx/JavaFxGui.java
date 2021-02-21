@@ -36,6 +36,7 @@ public class JavaFxGui extends Application {
 		System.exit(0);
 	}
 
+	@SuppressWarnings("SameParameterValue")
 	private Image loadImageFromClassResource(final String name) {
 		return new Image(getClass().getResourceAsStream(name));
 	}
