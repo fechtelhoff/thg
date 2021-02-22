@@ -48,6 +48,7 @@
 		<version.mockito>3.7.7</version.mockito>
 		<version.assertj-swing-junit>3.17.1</version.assertj-swing-junit>
 		<version.testfx>4.0.16-alpha</version.testfx>
+		<version.asciidoctor>1.5.4</version.asciidoctor>
 
 		<!-- Plugin Version -->
 		<version.compiler.plugin>3.8.1</version.compiler.plugin>
@@ -64,6 +65,7 @@
 		<version.dependency-check.plugin>6.1.0</version.dependency-check.plugin>
 		<version.gluon.client.plugin>0.1.36</version.gluon.client.plugin>
 		<version.javafx.plugin>0.0.5</version.javafx.plugin>
+		<version.asciidoctor.plugin>2.1.0</version.asciidoctor.plugin>
 
 		<!-- Sonar -->
 		<sonar.language>java</sonar.language>
@@ -271,6 +273,13 @@
 					<groupId>org.owasp</groupId>
 					<artifactId>dependency-check-maven</artifactId>
 					<version>${version.dependency-check.plugin}</version>
+				</plugin>
+
+				<!-- AsciiDoctor -->
+				<plugin>
+					<groupId>org.asciidoctor</groupId>
+					<artifactId>asciidoctor-maven-plugin</artifactId>
+					<version>${version.asciidoctor.plugin}</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>

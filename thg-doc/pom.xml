@@ -106,4 +106,80 @@
 		</plugins>
 	</build>
 
+	<profiles>
+		<profile>
+			<id>Documentation</id>
+			<build>
+				<plugins>
+					<!-- AsciiDoc -->
+					<plugin>
+						<groupId>org.asciidoctor</groupId>
+						<artifactId>asciidoctor-maven-plugin</artifactId>
+						<dependencies>
+							<dependency>
+								<groupId>org.asciidoctor</groupId>
+								<artifactId>asciidoctorj-pdf</artifactId>
+								<version>${version.asciidoctor}</version>
+							</dependency>
+						</dependencies>
+						<configuration>
+							<!-- Attributes common to all output formats -->
+							<attributes>
+								<sourcedir>${project.build.sourceDirectory}</sourcedir>
+								<project-version>${project.version}</project-version>
+							</attributes>
+						</configuration>
+						<!-- Multiple execution blocks allow to configure different input documents, output formats or other configuration options -->
+						<executions>
+							<execution>
+								<id>asciidoc-usermanual-to-pdf</id>
+								<phase>generate-resources</phase>
+								<goals>
+									<goal>process-asciidoc</goal>
+								</goals>
+								<configuration>
+									<sourceDirectory>src/main/user-manual</sourceDirectory>
+									<backend>pdf</backend>
+									<!-- Since 1.5.0-alpha.9, PDF back-end can also use 'rouge' which provides more coverage
+									for other languages like scala -->
+									<attributes>
+										<source-highlighter>coderay</source-highlighter>
+										<pagenums/>
+										<toc/>
+										<idprefix/>
+										<idseparator>-</idseparator>
+									</attributes>
+								</configuration>
+							</execution>
+							<execution>
+								<id>asciidoc-techdocs-to-html</id>
+								<phase>generate-resources</phase>
+								<goals>
+									<goal>process-asciidoc</goal>
+								</goals>
+								<configuration>
+									<sourceDirectory>src/main/user-manual</sourceDirectory>
+									<backend>html5</backend>
+									<attributes>
+										<source-highlighter>coderay</source-highlighter>
+										<!--
+										<imagesdir>./images</imagesdir>
+										-->
+										<toc>left</toc>
+										<icons>font</icons>
+										<sectanchors>true</sectanchors>
+										<!-- set the idprefix to blank -->
+										<idprefix/>
+										<idseparator>-</idseparator>
+										<docinfo1>true</docinfo1>
+									</attributes>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
 </project>

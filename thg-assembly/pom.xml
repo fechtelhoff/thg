@@ -108,7 +108,7 @@
 
 	<profiles>
 		<profile>
-			<id>Assemble</id>
+			<id>Assembly</id>
 			<build>
 				<plugins>
 					<!-- Assembly -->
