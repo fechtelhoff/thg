@@ -103,7 +103,7 @@
 		</profile>
 
 		<profile>
-			<id>NativeImage</id>
+			<id>createNativeImages</id>
 			<build>
 				<plugins>
 					<!-- GraalVM Native Image -->

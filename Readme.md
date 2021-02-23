@@ -38,6 +38,26 @@ Graal = General Recursive Applicative and Algorithmic Language
 - [**Blindtext Generator**](https://www.blindtextgenerator.de/)
 
 ---
+### Build commands
+
+|  #  | Befehl | Zeit | Bemerkung |
+| --- | ----- | ---- | --------- |
+| 0 | setEnv.cmd | - | |
+| 0 | setJava.cmd | - | |
+| 0 | mvn -version | - | optional |
+| 1 | mvn clean | 0.533 s | |
+| 2 | mvn install -DskipTests | 12.672 s | | 
+| 3 | mvn test | 11.183 s |  |
+| 4 | mvn test -PrunIntTests | 5.176 s | optional | 
+| 5 | mvn test -PrunGuiTest | 49.692 s | optional |
+| 6 | mvn install -DskipTests -PcreateNativeImages | 05:35 min | | 
+| 7 | mvn -f thg-doc install -PcreateDocumentation | 20.231 s |  |
+| 8 | mvn test -DskipTests -PcreateLicenses | 10.099 s |  |
+| 9 | mvn -f thg-assembly install -PcreateAssembly | 3.846 s | | 
+
+Die finale ZIP-Datei liegt im Verzeichnis `thg-assembly/target`.
+
+---
 ### Useful GraalVM commands
 ```
 java -agentlib:native-image-agent=config-output-dir=META-INF\native-image -jar <JAR_FILE>

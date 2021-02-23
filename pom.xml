@@ -44,8 +44,8 @@
 		<version.jetbrains.ui-designer>2020.2</version.jetbrains.ui-designer>
 		<version.javafx>15.0.1</version.javafx>
 		<version.junit>5.7.1</version.junit>
-		<version.junit5.system-exit>1.0.0</version.junit5.system-exit>
-		<version.mockito>3.7.7</version.mockito>
+		<version.junit5.system-exit>1.1.1</version.junit5.system-exit>
+		<version.mockito>3.8.0</version.mockito>
 		<version.assertj-swing-junit>3.17.1</version.assertj-swing-junit>
 		<version.testfx>4.0.16-alpha</version.testfx>
 		<version.asciidoctor>1.5.4</version.asciidoctor>
@@ -65,6 +65,7 @@
 		<version.dependency-check.plugin>6.1.0</version.dependency-check.plugin>
 		<version.gluon.client.plugin>0.1.36</version.gluon.client.plugin>
 		<version.javafx.plugin>0.0.5</version.javafx.plugin>
+		<version.license.plugin>2.0.0</version.license.plugin>
 		<version.asciidoctor.plugin>2.1.0</version.asciidoctor.plugin>
 
 		<!-- Sonar -->
@@ -281,6 +282,13 @@
 					<artifactId>asciidoctor-maven-plugin</artifactId>
 					<version>${version.asciidoctor.plugin}</version>
 				</plugin>
+
+				<!-- License -->
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>license-maven-plugin</artifactId>
+					<version>${version.license.plugin}</version>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 
@@ -402,7 +410,7 @@
 		</profile>
 
 		<profile>
-			<id>IntTest</id>
+			<id>runIntTests</id>
 			<build>
 				<plugins>
 					<plugin>
@@ -419,7 +427,7 @@
 		</profile>
 
 		<profile>
-			<id>GuiTest</id>
+			<id>runGuiTests</id>
 			<build>
 				<plugins>
 					<plugin>
@@ -434,6 +442,32 @@
 				</plugins>
 			</build>
 		</profile>
+
+		<profile>
+			<id>createLicenses</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>license-maven-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>aggregate-download-licenses</id>
+								<phase>test</phase>
+								<goals>
+									<goal>aggregate-download-licenses</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<executeOnlyOnRootModule>true</executeOnlyOnRootModule>
+							<verbose>true</verbose>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
 	</profiles>
 
 </project>

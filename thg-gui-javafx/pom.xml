@@ -163,7 +163,7 @@
 		</profile>
 
 		<profile>
-			<id>NativeImage</id>
+			<id>createNativeImages</id>
 			<build>
 				<finalName>${project.artifactId}</finalName>
 				<plugins>
