@@ -45,6 +45,7 @@ Graal = General Recursive Applicative and Algorithmic Language
 | 0 | setEnv.cmd | - | |
 | 0 | setJava.cmd | - | |
 | 0 | mvn -version | - | optional |
+| 0 | mvn verify -PcheckVersions | - | optional |
 | 1 | mvn clean | 0.533 s | |
 | 2 | mvn install -DskipTests | 12.672 s | | 
 | 3 | mvn test | 11.183 s |  |

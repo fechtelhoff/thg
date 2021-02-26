@@ -67,6 +67,7 @@
 		<version.javafx.plugin>0.0.5</version.javafx.plugin>
 		<version.license.plugin>2.0.0</version.license.plugin>
 		<version.asciidoctor.plugin>2.1.0</version.asciidoctor.plugin>
+		<version.versions.plugin>2.8.1</version.versions.plugin>
 
 		<!-- Sonar -->
 		<sonar.language>java</sonar.language>
@@ -404,6 +405,44 @@
 								<exclude>**/*GuiTest.java</exclude>
 							</excludes>
 						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<profile>
+			<id>checkVersions</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>versions-maven-plugin</artifactId>
+						<version>${version.versions.plugin}</version>
+						<executions>
+							<execution>
+								<id>display-dependency-updates</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>display-dependency-updates</goal>
+								</goals>
+							</execution>
+							<!--
+							<execution>
+								<id>display-plugin-updates</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>display-plugin-updates</goal>
+								</goals>
+							</execution>
+							-->
+							<execution>
+								<id>display-property-updates</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>display-property-updates</goal>
+								</goals>
+							</execution>
+						</executions>
 					</plugin>
 				</plugins>
 			</build>

@@ -70,4 +70,22 @@ image:./images/JavaFxGui.png[]
 == 4 Anhang
 === 4.1 Glossar
 === 4.2 Abkürzungsverzeichnis
+
+|===
+| Header 1 | Header 2 | Header 3
+
+|Column 1, row 1
+|Column 2, row 1
+|Column 3, row 1
+
+|Column 1, row 2
+|Column 2, row 2
+|Column 3, row 2
+
+|Column 1, row 3
+|Column 2, row 3
+|Column 3, row 3
+|===
+
+
 === 4.3 Links
