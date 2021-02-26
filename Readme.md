@@ -20,6 +20,7 @@ Graal = General Recursive Applicative and Algorithmic Language
 ---
 ### Links
 - [**GraalVM**](https://www.graalvm.org/)
+  - [Was ist GraalVM? (codecentric Blog)](https://blog.codecentric.de/2020/01/was-ist-graalvm/)
   - Quick References
     - [GraalVM Quick Reference](https://medium.com/graalvm/graalvm-quick-reference-b8d1dfe24241)
     - [GraalVM Native Image Quick Reference](https://medium.com/graalvm/graalvm-native-image-quick-reference-4ceb84560fd8)
@@ -42,19 +43,23 @@ Graal = General Recursive Applicative and Algorithmic Language
 
 |  #  | Befehl | Zeit | Bemerkung |
 | --- | ----- | ---- | --------- |
-| 0 | setEnv.cmd | - | |
-| 0 | setJava.cmd | - | |
+| 0 | **setEnv.cmd** | - | |
+| 0 | **setJava.cmd** | - | |
 | 0 | mvn -version | - | optional |
-| 0 | mvn verify -PcheckVersions | - | optional |
+| 0 | mvn verify -DskipTests -PcheckVersions | - | optional |
 | 1 | mvn clean | 0.533 s | |
-| 2 | mvn install -DskipTests | 12.672 s | | 
+| 2 | **mvn install -DskipTests** | 12.672 s | | 
 | 3 | mvn test | 11.183 s |  |
 | 4 | mvn test -PrunIntTests | 5.176 s | optional | 
 | 5 | mvn test -PrunGuiTest | 49.692 s | optional |
-| 6 | mvn install -DskipTests -PcreateNativeImages | 05:35 min | | 
-| 7 | mvn -f thg-doc install -PcreateDocumentation | 20.231 s |  |
-| 8 | mvn test -DskipTests -PcreateLicenses | 10.099 s |  |
-| 9 | mvn -f thg-assembly install -PcreateAssembly | 3.846 s | | 
+| 6 | **mvn install -DskipTests -PcreateNativeImages** | 05:35 min | GraalVM | 
+| 6a | mvn -f thg-cli install -DskipTests -PcreateNativeImages | 48.835 s | optional / GraalVM | 
+| 6b | mvn -f thg-gui-swing install -DskipTests -PcreateNativeImages | 01:36 min| optional / GraalVM | 
+| 6c | mvn -f thg-gui-javafx install -DskipTests -PcreateNativeImages | 02:44 min | optional / GraalVM | 
+| 7 | **mvn -f thg-doc install -PcreateDocumentation** | 20.231 s |  |
+| 8 | **mvn test -DskipTests -PcreateLicenses** | 10.099 s |  |
+| 9 | **mvn -f thg-assembly install -PcreateAssembly** | 3.846 s | | 
+In **FETT** sind alle Schritte ausgezeichnet, die zwingend für die Erstellung eines Releases (ZIP) erforderlich sind.
 
 Die finale ZIP-Datei liegt im Verzeichnis `thg-assembly/target`.
 
