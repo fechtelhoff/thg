@@ -59,6 +59,7 @@ Graal = General Recursive Applicative and Algorithmic Language
 | 7 | **mvn -f thg-doc install -PcreateDocumentation** | 20.231 s |  |
 | 8 | **mvn test -DskipTests -PcreateLicenses** | 10.099 s |  |
 | 9 | **mvn -f thg-assembly install -PcreateAssembly** | 3.846 s | | 
+
 In **FETT** sind alle Schritte ausgezeichnet, die zwingend für die Erstellung eines Releases (ZIP) erforderlich sind.
 
 Die finale ZIP-Datei liegt im Verzeichnis `thg-assembly/target`.
